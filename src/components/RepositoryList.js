@@ -1,13 +1,34 @@
+import React, { useState, useEffect } from 'react';
+
 import { RepositoryItem } from './RepositoryItem';
 
+import { StyledRepositoryList } from '../styles/RepositoryList.styled';
+
 export function RepositoryList() {
+  const [repos, setRepos] = useState([]);
+
+  useEffect(() => {
+    fetch('https://api.github.com/users/rathlucas/repos')
+      .then((response) => response.json())
+      .then((data) => setRepos(data));
+  });
+
   return (
-    <section className="repository-list">
+    <StyledRepositoryList>
       <h1>Lista de Repositórios</h1>
 
       <ul>
-        <RepositoryItem />
+        {repos.map((repo, index) => {
+          return (
+            <RepositoryItem
+              key={index}
+              name={repo.name}
+              description={repo.description}
+              html_url={repo.html_url}
+            />
+          );
+        })}
       </ul>
-    </section>
+    </StyledRepositoryList>
   );
 }

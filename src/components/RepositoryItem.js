@@ -1,10 +1,12 @@
-export function RepositoryItem() {
-  return (
-    <li>
-      <strong>unform</strong>
-      <p>Forms em React</p>
+import { StyledRepositoryItem } from '../styles/RepositoryItem.styled';
 
-      <a href="">Acessar Repositório</a>
-    </li>
+export function RepositoryItem({ name, description, html_url }) {
+  return (
+    <StyledRepositoryItem>
+      <strong>{name}</strong>
+      <p>{description}</p>
+
+      <a href={html_url}>Acessar Repositório</a>
+    </StyledRepositoryItem>
   );
 }
