@@ -1,5 +1,7 @@
 # Listagem de Repositórios em React
 
+![image](https://user-images.githubusercontent.com/79475372/172844193-b733775f-465b-4a45-b39e-4e854a2c096d.png)
+
 ## Descrição
 
 Aplicativo desenvolvido durante o curso Ignite ReactJs da Rocketseat, onde é realizada uma chamada HTTP na API do Github para listar os repositório presentes na minha conta.
