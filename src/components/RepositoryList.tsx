@@ -4,14 +4,20 @@ import { RepositoryItem } from './RepositoryItem';
 
 import { StyledRepositoryList } from '../styles/RepositoryList.styled';
 
+interface Repository {
+  name: string;
+  description: string;
+  html_url: string;
+}
+
 export function RepositoryList() {
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState<Repository[]>([]);
 
   useEffect(() => {
     fetch('https://api.github.com/users/rathlucas/repos')
       .then((response) => response.json())
       .then((data) => setRepos(data));
-  });
+  }, []);
 
   return (
     <StyledRepositoryList>
@@ -19,14 +25,7 @@ export function RepositoryList() {
 
       <ul>
         {repos.map((repo, index) => {
-          return (
-            <RepositoryItem
-              key={index}
-              name={repo.name}
-              description={repo.description}
-              html_url={repo.html_url}
-            />
-          );
+          return <RepositoryItem key={index} repository={repo} />;
         })}
       </ul>
     </StyledRepositoryList>
